@@ -78,11 +78,11 @@ module.exports = configure(function (/* ctx */) {
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
-      extendViteConf (viteConf) {
-        viteConf.server.hmr = {}
-        viteConf.server.hmr.host = 'www.faviconscraper.mc.hzuccon.com'
-        viteConf.server.hmr.clientPort = 443
-      },
+      // extendViteConf (viteConf) {
+      //   viteConf.server.hmr = {}
+      //   viteConf.server.hmr.host = 'www.faviconscraper.mc.hzuccon.com'
+      //   viteConf.server.hmr.clientPort = 443
+      // },
 
       
       // vitePlugins: [
@@ -93,8 +93,14 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       // https: true
-      port: 8082,
-      open: true // opens browser window automatically
+      open: true,
+      // Terminate if port is not available.
+      strictPort: true,
+      hmr: {
+        // If a specific Hot Module Reload (HMR) port is given, use it.
+        // NOTE: This allows HMR to work behind reverse-proxies.
+        clientPort: Number(process.env.HMR_PORT) ?? undefined,
+      },
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
