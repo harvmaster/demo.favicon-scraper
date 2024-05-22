@@ -29,5 +29,4 @@ interface TextInputProps {
 const props = defineProps<TextInputProps>()
 
 const model = defineModel()
-
 </script>
