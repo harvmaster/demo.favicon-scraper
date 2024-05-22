@@ -1,32 +1,32 @@
 <template>
   <q-page class="row items-center justify-center page-background q-pa-lg">
-    <div class="col-auto page-content row justify-center">
-      <div class="col-12 row q-pa-sm justify-center">
+    <div ref="pageContent" class="col-auto page-content column justify-center" :style="pageContentStyle">
+      <div class="col-auto full-width row q-pa-sm justify-center">
         <text-input class="col-12" v-model="url" label="URL" @update:model-value="handleUrlChange" placeholder="domain.com"/>
       </div>
 
-      <div v-if="logo.length" class="col-12 q-px-md">
+      <div v-if="logo.length" class="col-auto full-width q-px-md">
         <q-separator style="background-color: #8e8e8e" />
       </div>
 
-      <div v-if="logo.length" class="col-12 row q-pa-md">
-        <icon-list :images="logo" v-if="logo.length > 0" class="col-12"/>
-      </div>
+      <icon-list class="col full-width" :images="logo" @resize="getPageContentStyle"/>
+      <!-- <div class="col-auto full-width" :class="logo.length && 'q-pa-md'"> -->
+      <!-- </div> -->
     </div>
   </q-page>
 </template>
 
 <style scoped lang="scss">
-// .page-background {
-//   background-image: linear-gradient(43deg, #E39EC1, #DEBAC0);
-// }
 .page-content {
   width: 900px;
+  max-height: 90vh;
+  overflow: scroll;
   border-radius: 1em;
   background-color: #3e3e3e;
   border: 1px solid #8e8e8e;
 
   color: #9e9e9e;
+  transition: height 0.5s;
 }
 
 .page-background {
@@ -41,7 +41,7 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref, watch, nextTick } from 'vue'
 import TextInput from 'src/components/TextInput.vue';
 import { getLogos, ImageInfo } from 'favicons-scraper'
 import { Notify } from 'quasar';
@@ -73,6 +73,11 @@ const getLogosFromUrl = async (urlInput: string) => {
       logo.value = logos.sort((a, b) => a.size.width - b.size.width)
     }
   } catch (error) {
+    console.log(url.value)
+    if (url.value == '') {
+      logo.value = []
+      return
+    }
     if (url.value == urlInput) {
       logo.value = []
       Notify.create({
@@ -87,4 +92,26 @@ const getLogosFromUrl = async (urlInput: string) => {
     loading.value = false
   }
 }
+
+const pageContent = ref<HTMLElement | null>(null)
+const pageContentStyle = ref({})
+const getPageContentStyle = () => {
+  const children = pageContent.value?.children
+  if (!children) return {}
+
+  const height = Array.from(children).reduce((acc, child) => {
+    console.log('child', child)
+    return acc + (parseInt(child.computedStyleMap().get('height')?.toString() || '0') ||  child.clientHeight)
+  }, 0)
+
+  console.log('height', height)
+
+  return { height: `${height}px` }
+}
+
+watch(logo, () => {
+  nextTick(() => {
+    pageContentStyle.value = getPageContentStyle()
+  })
+})
 </script>
