@@ -1,17 +1,31 @@
 <template>
-  <div class="list-item-container">
-    <div class="list-item row">
-      <icon-list-item class="col-12" v-for="(image, index) of images" :key="image.src" :image="image" :visible-size="visibleSizes[index]"/>
+  <div class="icon-list-container">
+    <div class="icon-list row">
+      <icon-list-item class="col-12" v-for="(image) of images" :key="image.src" :image="image"/>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.icon-list {
+  max-width: 1200px;
 
+  .icon-list-item {
+    margin: 0.5rem;
+  }
+
+  .icon-list-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+}
 </style>
 
 <script setup lang="ts">
-import { ref, computed  } from 'vue'
 import IconListItem from './IconListItem.vue';
 import { ImageInfo } from 'favicons-scraper';
 
@@ -20,18 +34,4 @@ export type IconListProps = {
 }
 
 const props = defineProps<IconListProps>()
-
-const visibleSizes = computed(() => {
-  const min = 32 as const;
-  const max = 128 as const;
-
-  const scale = (max - min) / (props.images.length - 1);
-
-  return props.images.map((_, i) => {
-    const width = min + i * scale;
-    const height = width;
-
-    return { width, height };
-  });
-})
 </script>

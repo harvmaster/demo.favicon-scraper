@@ -7,6 +7,9 @@
       <div class="col-12 q-py-lg row justify-center">
         <text-input class="col-auto" v-model="url" label="URL" @update:model-value="handleUrlChange" placeholder="domain.com"/>
       </div>
+
+      <icon-list :images="logo" v-if="logo.length > 0" class="col-12"/>
+
       <div class="col-12 icon-list-container row q-pb-lg q-px-md justify-center">
 
         <div v-if="loading" class="q-pa-md text-center">
@@ -28,8 +31,11 @@
 </template>
 
 <style scoped lang="scss">
+// .page-background {
+//   background-image: linear-gradient(43deg, #E39EC1, #DEBAC0);
+// }
 .page-background {
-  background-image: linear-gradient(43deg, #E39EC1, #DEBAC0);
+  background-color: black;
 }
 .icon-list-container {
   max-width: 1200px;
@@ -44,6 +50,8 @@ import { ref } from 'vue'
 import TextInput from 'src/components/TextInput.vue';
 import { getLogos, ImageInfo } from 'favicons-scraper'
 import { Notify } from 'quasar';
+
+import IconList from 'src/components/IconList/IconList.vue'
 
 const loading = ref(false)
 
