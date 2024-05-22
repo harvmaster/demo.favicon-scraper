@@ -1,7 +1,9 @@
 # Favicons Scraper (Demo)
 
 A demo site for the favicons scraper API and SDK.
+
 API: [Source](https://github.com/harvmaster/api.faviconscraper)
+
 SDK: [source](https://github.com/harvmaster/sdk.favicons-scraper)
 
 ## Install the dependencies
