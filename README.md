@@ -1,6 +1,8 @@
 # Favicons Scraper (www.favicons-scraper)
 
-A demo site for the favicons scraper API and SDK
+A demo site for the favicons scraper API and SDK.
+API: [Source](https://github.com/harvmaster/api.faviconscraper)
+SDK: [source](https://github.com/harvmaster/sdk.favicons-scraper)
 
 ## Install the dependencies
 ```bash
