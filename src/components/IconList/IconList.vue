@@ -15,6 +15,8 @@
   overflow-y: hidden;
 }
 
+// Transition is disabled until I can figure out how to instantly remove them on leave
+
 // .icon-list-expand-move,
 // .icon-list-expand-enter-active, .icon-list-expand-leave-active {
 //   transition: all 0.5s;

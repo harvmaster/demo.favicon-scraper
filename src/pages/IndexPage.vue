@@ -40,7 +40,7 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue'
 import TextInput from 'src/components/TextInput.vue';
 import { getLogos, ImageInfo } from 'favicons-scraper'
 import { Notify } from 'quasar';

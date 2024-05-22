@@ -1,5 +1,7 @@
 <template>
   <div class="icon-list-item-container">
+
+    <!-- Main list item -->
     <div class="icon-list-item row" :style="`min-height: ${iconStyle.height}`" @click="expand">
       <div class="col-auto self-center q-pr-md">
         <q-img :src="image.src" :alt="image.src" :aspect-ratio="1" :width="iconStyle.width"/>
@@ -12,6 +14,8 @@
       </div>
 
     </div>
+
+    <!-- Expanded content -->
     <div ref="expandedContent" class="expanded-content" :style="expandedStyle">
       <div class="row q-pt-md">
         <div class="col-12">
