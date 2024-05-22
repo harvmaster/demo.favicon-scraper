@@ -4,6 +4,9 @@
       <q-icon name="search" size="2rem"/>
     </div>
     <input type="text" class="text-input col" v-model="model" :placeholder="placeholder"/>
+    <div class="col-auto self-center">
+      <q-spinner v-if="loading" size="2rem"/>
+    </div>
   </div>
 </template>
 
@@ -24,6 +27,7 @@ import { defineModel, defineProps } from 'vue'
 
 interface TextInputProps {
   placeholder: string
+  loading: boolean
 }
 
 const props = defineProps<TextInputProps>()

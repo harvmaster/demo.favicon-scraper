@@ -2,7 +2,7 @@
   <q-page class="row items-center justify-center page-background q-pa-lg">
     <div class="col-auto page-content justify-center">
       <div class="col-auto full-width row q-pa-sm justify-center">
-        <text-input class="col-12" v-model="url" label="URL" @update:model-value="handleUrlChange" placeholder="domain.com"/>
+        <text-input class="col-12" v-model="url" label="URL" @update:model-value="handleUrlChange" placeholder="domain.com" :loading="loading"/>
       </div>
 
       <div v-if="logo.length" class="col-auto full-width q-px-md">
