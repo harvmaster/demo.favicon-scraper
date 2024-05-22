@@ -36,5 +36,5 @@ export type IconListProps = {
   images: ImageInfo[];
 }
 
-const props = defineProps<IconListProps>()s
+const props = defineProps<IconListProps>()
 </script>
