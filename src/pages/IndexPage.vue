@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-center page-background q-pa-lg">
-    <div class="col-auto page-content justify-center">
+    <div class="col-auto page-content scrollable-bar justify-center">
       <div class="col-auto full-width row q-pa-sm justify-center">
         <text-input class="col-12" v-model="url" label="URL" @update:model-value="handleUrlChange" placeholder="domain.com" :loading="loading"/>
       </div>
@@ -20,7 +20,7 @@
 .page-content {
   width: 900px;
   max-height: 90vh;
-  overflow: scroll;
+  overflow: auto;
   border-radius: 1em;
   background-color: #3e3e3e;
   border: 1px solid #8e8e8e;

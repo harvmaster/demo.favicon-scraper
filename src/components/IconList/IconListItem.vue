@@ -8,7 +8,7 @@
       </div>
 
       <div class="col row self-center">
-        <span class="col-12 image-src">
+        <span class="col-12 image-src scrollable-bar">
           {{ image.src }}
         </span>
       </div>
@@ -56,7 +56,6 @@
 }
 .image-src {
   font-size: 1.5rem;
-  overflow: scroll;
 }
 .icon-list-item {
   transform: translateX(0);

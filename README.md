@@ -2,6 +2,8 @@
 
 A demo site for the favicons scraper API and SDK.
 
+[Live Demo](https://www.faviconscraper.mc.hzuccon.com/#/)
+
 API: [Source](https://github.com/harvmaster/api.faviconscraper)
 
 SDK: [source](https://github.com/harvmaster/sdk.favicons-scraper)
